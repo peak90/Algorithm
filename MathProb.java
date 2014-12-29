@@ -7,9 +7,9 @@ import java.util.*;
 public class MathProb {
 	public static void main(String[] args) {
 		MathProb sol = new MathProb();
-		for(int i = 0; i < 10; i++) {
-			System.out.println(sol.fib(i));
-		}
+		int[] array = new int[]{1,2,3,4,5,6,7,8,9,10};
+		sol.shuffle(array);
+		System.out.println(Arrays.toString(array));
 	}
 	/**
 	 * Check prime
@@ -431,6 +431,19 @@ public class MathProb {
 	}
 	//the fastest way using formular
 	//F(n) = 1/sqrt(5) *((1+sqrt(5)/2)^n - ((1-sqrt(5))/2)^n)
+	/**
+	 * Knuth shuffle
+	 */
+	public void shuffle(int[] array) {
+		if(array == null || array.length == 0) return;
+		Random r = new Random();
+		for(int i = 0; i < array.length; i++) {
+			int randindex = i + r.nextInt(array.length - i);
+			int tmp = array[randindex];
+			array[randindex] = array[i];
+			array[i] = tmp;
+		}
+	}
 }
 
 class Point {
